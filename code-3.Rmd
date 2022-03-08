@@ -1,0 +1,39 @@
+---
+title: "code-3"
+author: "anchal"
+date: "4/9/2021"
+output: html_document
+---
+
+```{r}
+ # styling hierarchical tree to show the main focus on projects
+library(DiagrammeR)
+library(data.tree)
+company <- Node$new("Software Solutions")
+  research <- company$AddChild("Research")
+    software <- research$AddChild("Artificial Intelligence")
+    standards <- research$AddChild("Blockchain")
+  education <- company$AddChild("Education")
+    newProductLine <- education$AddChild("FIU Mobile")
+    newLabs <- education$AddChild("Canvas")
+  health <- company$AddChild("Health")
+    outsource <- health$AddChild("COVID updates")
+    agile <- health$AddChild("Fitness Tracker")
+    goToR <- health$AddChild("P3 App")
+  ecom <- company$AddChild("E-commerce")
+    retail <- ecom$AddChild("Web Retail App")
+    inventory <- ecom$AddChild("Inventory Check")
+    dock <- ecom$AddChild("Dock App") 
+    
+    # styling 
+
+SetGraphStyle(company, rankdir = "TB")
+SetEdgeStyle(company, arrowhead = "vee", color = "black", penwidth = 2)
+SetNodeStyle(company, style = "filled,rounded", shape = "box", fillcolor = "turquoise", 
+            fontname = "helvetica",fontcolor="Black", tooltip = GetDefaultTooltip)
+SetNodeStyle(company$Education, fillcolor = "lavender", penwidth = "5px")
+SetNodeStyle(company$Health, fillcolor = "LightBlue", penwidth = "5px")
+plot(company)
+
+```
+

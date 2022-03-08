@@ -1,0 +1,28 @@
+---
+title: "code-4"
+author: "anchal"
+date: "4/9/2021"
+output: html_document
+---
+
+```{r}
+# reading data from csv file
+df <- read.csv("data.csv", sep=",")
+names(df) <- c("quarter", "month","category","projects")
+head(df)
+```
+```{r}
+# implementation of radial tree
+
+library(data.tree)
+library(networkD3)
+#defining hierarchy
+df$pathString <- paste("Software Solutions", df$quarter, df$month, df$category,df$projects, sep=",")
+#converting to Node
+useRtree <- as.Node(df, pathDelimiter = ",")
+
+#plotting radial tree
+useRtreeList <- ToListExplicit(useRtree, unname = TRUE)
+radialNetwork( useRtreeList)
+```
+

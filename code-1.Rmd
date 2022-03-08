@@ -1,0 +1,30 @@
+---
+title: "code-1"
+author: "anchal"
+date: "4/9/2021"
+output: html_document
+---
+
+```{r}
+# Creating a tree for current projects of a company in various categories 
+
+library(data.tree)
+company <- Node$new("Software Solutions")
+  research <- company$AddChild("Research")
+    software <- research$AddChild("Artificial Intelligence")
+    standards <- research$AddChild("Blockchain")
+  education <- company$AddChild("Education")
+    newProductLine <- education$AddChild("FIU Mobile")
+    newLabs <- education$AddChild("Canvas")
+  health <- company$AddChild("Health")
+    outsource <- health$AddChild("COVID updates")
+    agile <- health$AddChild("Fitness Tracker")
+    p3 <- health$AddChild("P3 App")
+  ecom <- company$AddChild("E-commerce")
+    retail <- ecom$AddChild("Web Retail App")
+    inventory <- ecom$AddChild("Inventory Check")
+    dock <- ecom$AddChild("Dock App")  
+
+print(company)
+
+```

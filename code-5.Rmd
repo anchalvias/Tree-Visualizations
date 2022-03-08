@@ -1,0 +1,33 @@
+---
+title: "code-5"
+author: "anchal"
+date: "4/9/2021"
+output: html_document
+---
+
+```{r}
+# reading data from csv file
+df <- read.csv("data.csv", sep=",")
+names(df) <- c("quarter", "month","category","projects")
+
+# data pivoting - to count the number of projects in each category
+
+library(dplyr)
+df1 <- df %>%
+  count(quarter,category,sort=FALSE)
+df1
+```
+```{r}
+# implementation of treemap
+
+library(treemap)
+treemap(df1,
+        index=c("quarter","category","n"),
+        vSize = "n",
+        type="index",
+        palette = "Blues",
+        title="Project categorization in each quarter",
+        fontsize.title = 14
+        )
+```
+
